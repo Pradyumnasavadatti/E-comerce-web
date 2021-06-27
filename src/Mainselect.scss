@@ -1,0 +1,298 @@
+.class1 {
+  width: 100vmax;
+}
+.class2 {
+  width: 100vmax;
+  height: 35vmax;
+  margin-top: 1vmax;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 128, 0.5),
+    rgba(255, 0, 0, 0.8)
+  );
+  -webkit-clip-path: polygon(
+    0% 0%,
+    0% 0,
+    98% 0%,
+    90% 20%,
+    98% 30%,
+    90% 40%,
+    98% 50%,
+    90% 60%,
+    98% 70%,
+    90% 80%,
+    98% 98%,
+    0% 98%
+  );
+  clip-path: polygon(
+    0% 0%,
+    0% 0,
+    98% 0%,
+    90% 20%,
+    98% 30%,
+    90% 40%,
+    98% 50%,
+    90% 60%,
+    98% 70%,
+    90% 80%,
+    98% 98%,
+    0% 98%
+  );
+}
+
+.angle {
+  height: 100%;
+  width: 15vmax;
+  display: flexbox;
+}
+.angle1 {
+  margin-top: 0.6vmax;
+}
+.angle2 {
+  --h: cadetblue;
+  --h2: coral;
+  color: coral;
+  width: 10vmax;
+  height: 9.5vmax;
+  border-width: 0.1vmax;
+  border-style: solid;
+  border-color: crimson;
+  box-shadow: 0vmax 0vmax 1.2vmax 0.7vmax crimson;
+  border-radius: 5vmax;
+}
+.angle21 {
+  margin-top: 1.3vmax;
+}
+.angle2:hover {
+  animation: ani12 0.4s ease-out forwards;
+}
+@keyframes ani12 {
+  50% {
+    filter: blur(0.2vmax);
+    transform: rotate(30deg) scale(0.5, 0.5);
+  }
+  100% {
+    filter: blur(0);
+    transform: rotate(0) scale(1.3, 1.3);
+  }
+}
+.mainitem {
+  height: 100%;
+  width: 30vmax;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 0.7vmax;
+}
+.Mainimg {
+  width: 85%;
+  height: 85%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-width: 0.1vmax;
+  box-shadow: 0 0 1.2vmax 1vmax crimson;
+  border-style: solid;
+  border-color: crimson;
+  border-top-left-radius: 10vmax;
+  border-bottom-right-radius: 10vmax;
+  background: radial-gradient(white 80%, crimson);
+  --mcolor: white;
+}
+.Mainimg2 {
+  width: 78%;
+  height: 80%;
+}
+.descrp2 {
+  height: 85%;
+  width: 35vmax;
+  display: flexbox;
+  justify-content: space-around;
+  margin-left: 3vmax;
+  margin-bottom: 1vmax;
+  border-width: 0.1vmax;
+  box-shadow: 0 0 1.2vmax 1vmax crimson;
+  border-color: crimson;
+  border-style: solid;
+  background-color: white;
+  border-radius: 5vmax;
+  background: radial-gradient(white 80%, crimson);
+  animation: desani2 0.5s ease-out alternate;
+}
+.descrp3 {
+  height: 85%;
+  width: 35vmax;
+  display: flexbox;
+  justify-content: space-around;
+  margin-left: 3vmax;
+  margin-bottom: 1vmax;
+  border-width: 0.1vmax;
+  box-shadow: 0 0 1.2vmax 1vmax crimson;
+  border-color: crimson;
+  border-style: solid;
+  background-color: white;
+  border-radius: 5vmax;
+  background: radial-gradient(white 80%, crimson);
+  animation: desani 0.5s ease-out alternate;
+}
+@keyframes desani {
+  50% {
+    filter: blur(0.2vmax);
+  }
+}
+@keyframes desani2 {
+  50% {
+    filter: blur(0.2vmax);
+  }
+}
+
+.txt3 {
+  font-size: 2vmax;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: red;
+}
+.txt2 {
+  font-size: 1.5vmax;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: red;
+}
+.txt4 {
+  margin-top: 5vmax;
+  font-size: 1.3vmax;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: red;
+  text-align: center;
+}
+.btn1 {
+  background-color: dodgerblue;
+  padding: 1vmax 1vmax 1vmax 1vmax;
+  border-color: white;
+  border-width: 0.51vmax;
+  border-style: solid;
+  border-radius: 1vmax;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: white;
+  font-size: 1.5vmax;
+  cursor: pointer;
+}
+.btn1:hover {
+  animation: animations 1s ease-out forwards;
+  background-color: cornflowerblue;
+}
+.btn2 {
+  width: 11vmax;
+  background-color: darkslateblue;
+  padding: 1vmax 1vmax 1vmax 1vmax;
+  border-color: white;
+  border-width: 0.51vmax;
+  border-style: solid;
+  border-radius: 1vmax;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: white;
+  font-size: 1.5vmax;
+  cursor: pointer;
+}
+.btn2:hover {
+  animation: animations 1s ease-out forwards;
+  background-color: mediumslateblue;
+}
+@keyframes animations {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.05, 1.05);
+  }
+}
+.btn3 {
+  width: 11vmax;
+  background-color: darkcyan;
+  padding: 1vmax 1vmax 1vmax 1vmax;
+  border-color: white;
+  border-width: 0.51vmax;
+  border-style: solid;
+  border-radius: 1vmax;
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: white;
+  font-size: 1.5vmax;
+}
+
+.btn3:hover {
+  background-color: cornflowerblue;
+  animation: animations 1s ease-out forwards;
+}
+
+.btn4 {
+  width: 11vmax;
+  background-color: lightseagreen;
+  padding: 1vmax 1vmax 1vmax 1vmax;
+  border-color: white;
+  border-width: 0.51vmax;
+  border-style: solid;
+  border-radius: 1vmax;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: white;
+  font-size: 1.5vmax;
+}
+
+@media only screen and (max-width: 400px) {
+  .class1 {
+    width: 100vmax;
+  }
+  .class2 {
+    width: 100vmax;
+    height: 60vmax;
+    margin-top: 0.5vmax;
+  }
+  .angle {
+    height: 100%;
+    width: 15vmax;
+  }
+  .angle1 {
+    margin-top: 0.6vmax;
+  }
+  .angle2 {
+    width: 13vmax;
+    height: 16vmax;
+    border-width: 0.9vmax;
+    border-radius: 10vmax;
+  }
+  .Mainimg {
+    border-width: 1.5vmax;
+  }
+  .descrp2 {
+    border-width: 1.5vmax;
+    border-radius: 8vmax;
+    justify-content: unset;
+  }
+  .txt3 {
+    font-size: 3.5vmax;
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    color: red;
+  }
+  .txt2 {
+    font-size: 3vmax;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    color: red;
+  }
+  .btn1 {
+    font-size: 3vmax;
+  }
+  .btn2 {
+    font-size: 3vmax;
+  }
+}

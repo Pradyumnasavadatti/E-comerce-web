@@ -1,0 +1,16 @@
+.card {
+  width: 90vmax;
+  height: 27vmax;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 0.1vmax solid rgba(0, 0, 0, 0);
+  margin-top: 1%;
+  border-style: solid;
+}
+@media only screen and (max-width: 750px) {
+  .card {
+    width: 82vmax;
+    height: 57vmax;
+  }
+}

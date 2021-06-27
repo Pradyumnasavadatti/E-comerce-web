@@ -1,0 +1,208 @@
+.wrapper {
+  min-width: 100%;
+  overflow-x: hidden;
+  width: 100vmax;
+  display: block;
+  align-items: center;
+  margin-top: 1vmax;
+}
+.wrapper1 {
+  width: 100vmax;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2vmax;
+}
+.wrapper2 {
+  width: 100vmax;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.wrapper20 {
+  width: 100vmax;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.wrapper3 {
+  width: 20vmax;
+  display: flexbox;
+  height: 25vmax;
+  border-width: 0.3vmax;
+  border-style: solid;
+  animation: animati2 5s ease-out forwards;
+  animation-iteration-count: infinite;
+  border-color: darkolivegreen;
+  box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax darkolivegreen;
+  border-radius: 1vmax;
+}
+
+.wrapper3:hover {
+  animation: animati 1s ease-out forwards;
+  border-color: red;
+  box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax rgba(255, 0, 0, 1);
+}
+@keyframes animati {
+  0% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1.05, 1.05);
+  }
+}
+@keyframes animati2 {
+  0% {
+    border-color: crimson;
+    box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax crimson;
+  }
+  20% {
+    border-color: teal;
+    box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax teal;
+  }
+  40% {
+    border-color: hotpink;
+    box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax hotpink;
+  }
+  60% {
+    border-color: #d53a9d;
+    box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax #d53a9d;
+  }
+  80% {
+    border-color: cornflowerblue;
+    box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax cornflowerblue;
+  }
+  100% {
+    border-color: rgb(8, 94, 65);
+    box-shadow: 0vmax 0vmax 0.5vmax 0.5vmax rgb(8, 94, 65);
+  }
+}
+.wrapper31 {
+  width: 20vmax;
+  display: flexbox;
+  height: 25vmax;
+  border-top: 0vmax solid black;
+  border-right: 0vmax solid rgba(255, 0, 0, 0.8);
+  border-bottom: 0vmax solid rgba(255, 0, 0, 0.8);
+  border-left: 0vmax solid black;
+  box-shadow: 0vmax 0vmax rgba(255, 0, 0, 0.3);
+  border-radius: 0;
+}
+.itemimg {
+  height: 100%;
+  width: 100%;
+}
+.shirt {
+  height: 70%;
+  width: 90%;
+  margin-left: 0.9vmax;
+}
+.txt {
+  font-size: 1.4vmax;
+}
+@media only screen and (max-width: 750px) {
+  .wrapper {
+    margin-top: 5vmax;
+  }
+  .wrapper20 {
+    width: 100vmax;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2vmax;
+  }
+  .wrapper2 {
+    width: 100vmax;
+    display: block;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .wrapper3 {
+    width: 40vmax;
+    display: flexbox;
+    height: 40vmax;
+    border-top: 0.5vmax solid black;
+    border-right: 0.5vmax solid rgba(255, 0, 0, 0.8);
+    border-bottom: 0.5vmax solid rgba(255, 0, 0, 0.8);
+    border-left: 0.5vmax solid black;
+    box-shadow: 1vmax 1vmax rgba(255, 0, 0, 0.3);
+    border-radius: 0;
+  }
+  .wrapper31 {
+    width: 30vmax;
+    display: flexbox;
+    height: 30vmax;
+    border-top: 0vmax solid black;
+    border-right: 0vmax solid rgba(255, 0, 0, 0.8);
+    border-bottom: 0vmax solid rgba(255, 0, 0, 0.8);
+    border-left: 0vmax solid black;
+    box-shadow: 0vmax 0vmax rgba(255, 0, 0, 0.3);
+    border-radius: 0;
+  }
+  .itemimg {
+    height: 100%;
+    width: 100%;
+  }
+  .shirt {
+    height: 60%;
+    width: 90%;
+    margin-left: 0.9vmax;
+  }
+
+  .txt {
+    font-size: 3vmax;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .wrapper {
+    margin-top: 5vmax;
+  }
+  .wrapper20 {
+    width: 100vmax;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2vmax;
+  }
+  .wrapper2 {
+    width: 100vmax;
+    display: block;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .wrapper3 {
+    width: 45vmax;
+    display: flexbox;
+    height: 45vmax;
+    border-top: 0.5vmax solid black;
+    border-right: 0.5vmax solid rgba(255, 0, 0, 0.8);
+    border-bottom: 0.5vmax solid rgba(255, 0, 0, 0.8);
+    border-left: 0.5vmax solid black;
+    box-shadow: 1vmax 1vmax rgba(255, 0, 0, 0.3);
+    border-radius: 0;
+  }
+  .wrapper31 {
+    width: 45vmax;
+    display: flexbox;
+    height: 45vmax;
+    border-top: 0vmax solid black;
+    border-right: 0vmax solid rgba(255, 0, 0, 0.8);
+    border-bottom: 0vmax solid rgba(255, 0, 0, 0.8);
+    border-left: 0vmax solid black;
+    box-shadow: 0vmax 0.5vmax rgba(255, 0, 0, 0.3);
+    border-radius: 0;
+  }
+  .itemimg {
+    height: 100%;
+    width: 100%;
+  }
+  .shirt {
+    height: 60%;
+    width: 90%;
+    margin-left: 0.9vmax;
+  }
+
+  .txt {
+    font-size: 3.7vmax;
+  }
+}

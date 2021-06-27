@@ -1,0 +1,973 @@
+.navmain {
+  width: 100vmax;
+  min-height: 6vmax;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+#navsub {
+  width: 100vmax;
+  height: 6vmax;
+  align-items: center;
+  display: flex;
+  position: relative;
+  background-color: white;
+  z-index: 1;
+  justify-content: unset;
+  border-bottom: 0.01vmax solid rgba(255, 0, 0, 0);
+  box-shadow: 0 0 4vmax 0.01vmax rgba(255, 0, 0, 0.3);
+}
+#logo {
+  width: 15vmax;
+  height: 6vmax;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.midd {
+  width: 15vmax;
+  height: 100%;
+  display: block;
+  background-color: white;
+}
+.midd2 {
+  width: 10vmax;
+  height: 100%;
+  display: block;
+  background-color: white;
+}
+#menubtn {
+  display: none;
+}
+
+#navitems {
+  width: 40vmax;
+  height: 6vmax;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#sup {
+  font-size: 1.5vmax;
+}
+
+.navitem1 {
+  width: 13vmax;
+  height: 5vmax;
+  border-right: 0.5vh solid rgba(255, 0, 0, 1);
+  cursor: pointer;
+}
+.navitem1:hover > .paraitem1 {
+  transform: scale(1.1, 1.1);
+}
+
+#navitem2 {
+  width: 13vmax;
+  height: 5vmax;
+  cursor: pointer;
+  border-right: 0.5vh solid rgba(255, 0, 0, 1);
+}
+#navitem2:hover > .paraitem2 {
+  transform: scale(1.1, 1.1);
+}
+#navitem3 {
+  width: 13vmax;
+  height: 5vmax;
+  cursor: pointer;
+}
+#navitem3:hover > .paraitem3 {
+  transform: scale(1.1, 1.1);
+}
+#filterdiv {
+  height: 6vmax;
+  width: 22vmax;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filter {
+  width: 70%;
+  height: 90%;
+  font-size: 1.5vmax;
+  font-weight: bolder;
+  border-radius: 1vmax;
+  color: white;
+  border: 0.1vmax solid white;
+  background: linear-gradient(
+    135deg,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green
+  );
+}
+.filter:hover {
+  box-shadow: 0 0 2vmax 0.1vmax rgba(255, 0, 0, 0.2);
+  border-color: rgba(255, 0, 0, 0.2);
+}
+.paraitem1 {
+  position: relative;
+  font-size: 1.5vmax;
+  font-weight: bold;
+}
+.paraitem2 {
+  position: relative;
+  font-size: 1.5vmax;
+  font-weight: bold;
+}
+.paraitem3 {
+  position: relative;
+  font-size: 1.5vmax;
+  font-weight: bold;
+}
+#mainlabel {
+  font-size: 2.5vmax;
+  font-weight: bolder;
+  animation: animation1 10s linear infinite;
+}
+
+@keyframes animation1 {
+  0% {
+    color: fuchsia;
+  }
+  20% {
+    color: darkseagreen;
+  }
+  40% {
+    color: rgba(21, 190, 196, 0.801);
+  }
+  60% {
+    color: palegreen;
+  }
+  80% {
+    color: rgb(117, 72, 240);
+  }
+  100% {
+    color: mediumvioletred;
+  }
+}
+
+hr {
+  width: 5%;
+  border: 1px solid white;
+}
+
+h1 {
+  position: relative;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 2.5vmax;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5vmax;
+  text-transform: uppercase;
+  text-shadow: 0 0 0.15em red;
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+  animation: shake 2.5s linear infinite;
+}
+
+h1 span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  -webkit-clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+  clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+}
+
+h1::before,
+h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+h1::before {
+  animation: crack1 2.5s linear infinite;
+  -webkit-clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+}
+
+h1::after {
+  animation: crack2 2.5s linear infinite;
+  -webkit-clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+  clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+}
+
+@keyframes shake {
+  5%,
+  15%,
+  25%,
+  35%,
+  55%,
+  65%,
+  75%,
+  95% {
+    filter: blur(0.018em);
+    transform: translateY(0.018em) rotate(0deg);
+  }
+
+  10%,
+  30%,
+  40%,
+  50%,
+  70%,
+  80%,
+  90% {
+    filter: blur(0.01em);
+    transform: translateY(-0.018em) rotate(0deg);
+  }
+
+  20%,
+  60% {
+    filter: blur(0.03em);
+    transform: translate(-0.018em, 0.018em) rotate(0deg);
+  }
+
+  45%,
+  85% {
+    filter: blur(0.03em);
+    transform: translate(0.018em, -0.018em) rotate(0deg);
+  }
+
+  100% {
+    filter: blur(0.007em);
+    transform: translate(0) rotate(-0.5deg);
+  }
+}
+
+@keyframes crack1 {
+  0%,
+  95% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(-51%, -48%);
+  }
+}
+
+@keyframes crack2 {
+  0%,
+  95% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(-49%, -53%);
+  }
+}
+
+/*Filter specification*/
+
+.filterdiv1 {
+  width: 100%;
+  height: 170vmax;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 0;
+  justify-content: space-around;
+  position: absolute;
+  backdrop-filter: blur(0.5vmax);
+}
+@keyframes filani {
+  0% {
+    filter: blur(0.5vmax);
+  }
+  100% {
+    filter: blur(0vmax);
+  }
+}
+.filterdiv2 {
+  width: 35%;
+  height: 20%;
+  animation: filani 0.2s ease-out forwards;
+  background: linear-gradient(
+    135deg,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green
+  );
+  z-index: 0;
+  position: absolute;
+  display: flexbox;
+  justify-content: space-around;
+  border-bottom-left-radius: 7vmax;
+  border-bottom-right-radius: 7vmax;
+  border-top-right-radius: 7vmax;
+}
+
+.searchfilter {
+  width: 50%;
+  height: 10%;
+  box-shadow: 0 0 7vmax 0.1vmax rgba(0, 0, 0, 0.5);
+  font-size: 1.5vmax;
+  font-weight: bolder;
+  border-radius: 2vmax;
+  color: white;
+  border: 0.1vmax solid rgba(0, 0, 0, 0);
+  background: linear-gradient(
+    45deg,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green,
+    red,
+    blue,
+    crimson,
+    green
+  );
+}
+.lab {
+  font-size: 1.5vmax;
+  font-weight: bolder;
+  color: white;
+}
+.colors {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+select {
+  font-size: 1.5vmax;
+  font-weight: bolder;
+  color: white;
+  background-color: darkmagenta;
+  border: 0.1vmax solid rgba(0, 0, 0, 0);
+}
+/*Product Side Bar*/
+
+.pmen1 {
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  font-size: 1.3vmax;
+}
+.pmen1:hover {
+  transform: scale(1.1, 1.1);
+}
+@keyframes animat {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+}
+@keyframes animat2 {
+  100% {
+    opacity: 1;
+    transform: translateY(-180%);
+  }
+
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+.onHover {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  background-color: crimson;
+  animation: animat 0.6s ease-out forwards;
+  position: absolute;
+  z-index: 0;
+  color: white;
+}
+
+.onHover2 {
+  opacity: 1;
+  width: 100%;
+  display: flex;
+  background-color: rgba(255, 0, 0, 0.4);
+  position: absolute;
+  z-index: 2;
+}
+.onHover3 {
+  opacity: 1;
+  width: 100%;
+  display: flexbox;
+  background-color: crimson;
+  animation: animat2 0.6s ease-out forwards;
+  position: absolute;
+  z-index: 0;
+  color: white;
+}
+.onHoverpara {
+  width: 100%;
+  display: flex;
+  height: 100vmax;
+  position: absolute;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0.5vmax);
+}
+
+/*Cart Side Bar*/
+
+.cartspara {
+  width: 100%;
+  display: flex;
+  height: 200vmax;
+  position: absolute;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0.5vmax);
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.carts {
+  width: 40%;
+  height: 50vmax;
+  z-index: 0;
+  animation: cartani 0.5s ease-out forwards;
+  overflow: scroll;
+}
+
+@keyframes cartani {
+  0% {
+    transform: translateY(-100%);
+  }
+  10% {
+    transform: translateY(-90%);
+  }
+  20% {
+    transform: translateY(-80%);
+  }
+  30% {
+    transform: translateY(-70%);
+  }
+  40% {
+    transform: translateY(-60%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  60% {
+    transform: translateY(-40%);
+  }
+  70% {
+    transform: translateY(-30%);
+  }
+  80% {
+    transform: translateY(-20%);
+  }
+  90% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.cartcardpara {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.cartcard {
+  width: 35vmax;
+  height: 15vmax;
+  background-color: white;
+  border: 2px solid black;
+  position: relative;
+  display: flex;
+  border: 1vmax solid crimson;
+  justify-content: flex-start;
+  margin-top: 0.2vmax;
+  margin-bottom: 0.8vmax;
+  background-color: crimson;
+  cursor: pointer;
+}
+.cartcard:hover {
+  transform: scale(1.06, 1.06);
+}
+.sideimg {
+  width: 40%;
+  height: 100%;
+  background-color: rgba(255, 0, 0, 1);
+}
+.sideimg2 {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 1);
+}
+.side2 {
+  width: 60%;
+  height: 100%;
+  display: flexbox;
+}
+.sidetext {
+  color: white;
+  height: 60%;
+  font-weight: bolder;
+  font-size: 1.4vmax;
+}
+.sidebutton {
+  width: 40%;
+  height: 25%;
+  color: crimson;
+  font-weight: bolder;
+  background-color: white;
+  font-size: 1.4vmax;
+  border: 1px solid white;
+  border-radius: 1vmax;
+  cursor: pointer;
+}
+.sidebutton:hover {
+  transform: scale(1.06, 1.06);
+}
+.divp {
+  vertical-align: top;
+}
+
+/*User Side Bar*/
+.usersidepara {
+  width: 100%;
+  height: 170vmax;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 0;
+  position: absolute;
+  backdrop-filter: blur(0.5vmax);
+}
+.userside {
+  width: 30%;
+  height: 30vmax;
+  background-color: crimson;
+  font-size: 1.5vmax;
+  font-weight: bold;
+  border-top-color: white;
+  color: white;
+  border-bottom-left-radius: 30vmax;
+}
+.hoz {
+  width: 30%;
+  border: 0.1vmax solid white;
+  background-color: white;
+}
+.fp {
+  margin-top: 7vmax;
+  cursor: pointer;
+  font-size: 1.3vmax;
+}
+.fp:hover {
+  transform: scale(1.1, 1.1);
+}
+
+@media only screen and (max-width: 750px) {
+  #navsub {
+    width: 100vmax;
+    height: 18vmax;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  #logo {
+    width: 20vmax;
+    height: 18vmax;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #navitems {
+    display: none;
+  }
+  #sup {
+    font-size: 3vmax;
+  }
+  #searchbar {
+    height: 18vmax;
+    width: 60vmax;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #navsearch {
+    font-size: 4vmax;
+    width: 40vmax;
+    height: 5vmax;
+    border: 0.2vmax solid black;
+  }
+  #searchicon {
+    font-size: 5vmax;
+  }
+  .paraitem {
+    position: relative;
+    font-size: 1.5vmax;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 7vmax;
+  }
+  #menubtn {
+    height: 18vmax;
+    width: 20vmax;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #mbtn {
+    font-size: 7vmax;
+  }
+}
