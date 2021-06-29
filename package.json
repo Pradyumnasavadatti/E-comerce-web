@@ -1,7 +1,7 @@
 {
   "name": "main",
   "version": "0.1.0",
-  "homepage": "http://Pradyumnasavadatti.github.io/Practice_logic_project",
+  "homepage": "http://Pradyumnasavadatti.github.io/TBB",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",

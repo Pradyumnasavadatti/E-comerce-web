@@ -1,35 +1,103 @@
 import data from "../selectpage/Data3";
 import "./Payment.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-let a = "";
+import firebase from "../firebase";
+import { Auth, useAuth } from "../contexts/AuthContext";
+import { useHistory } from "react-router";
+let a = 0;
+let fprice = 0;
+let quantity = 1;
+let q = 1;
+let mode = "Pay on Delivary";
 function Payment(props) {
+  const cu = useAuth();
+  const nam = useRef();
+  const mobile = useRef();
+  const house = useRef();
+  const area = useRef();
+  const city = useRef();
+  const state = useRef();
   const [i, changei] = useState(1);
+  const history = useHistory();
   const func1 = () => {
+    fprice = (i + 1) * a;
+    quantity = i + 1;
     changei(i + 1);
   };
   const func2 = () => {
     if (i > 1) {
+      fprice = (i - 1) * a;
+      quantity = i - 1;
       changei(i - 1);
     }
   };
   let ind = "";
   ind = useLocation();
+  const properties = [];
+  firebase
+    .database()
+    .ref("Products")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        properties.push(i[id]);
+      }
+    });
+  const modehandler = (e) => {
+    mode = e.target.value;
+    console.log(mode);
+  };
+  const payhandler = () => {
+    const list = [
+      {
+        Name: nam.current.value,
+        Mobile: mobile.current.value,
+        House: house.current.value,
+        Area: area.current.value,
+        City: city.current.value,
+        State: state.current.value,
+        email: cu.currentUser.email,
+        productid: ind.state.d1,
+        total: fprice,
+        quantity: quantity,
+      },
+    ];
+
+    firebase
+      .database()
+      .ref("User")
+      .on("value", (snapshot) => {
+        const i = snapshot.val();
+        for (let id in i) {
+          if (cu.currentUser.email === i[id].email) {
+            if (q === 1) {
+              q = q + 1;
+              firebase.database().ref(`User/${id}/orders`).push(list[0]);
+            }
+          }
+        }
+      });
+    history.push("/OrderPlaced");
+  };
   return (
     <div className="buyMain">
       <div className="mainCard">
-        {data.properties.map((index) => {
-          if (index.index === ind.state.d1) {
+        {properties.map((index) => {
+          if (Number(index.index) === ind.state.d1) {
             return (
               <div className="sub1">
-                <p className="none">{(a = index.price)}</p>
+                <p className="none">
+                  {(a = index.price)}
+                  {(fprice = index.price)}
+                </p>
                 <Link
                   to={{ pathname: "/bestItem", state: ind.state.d1 }}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <div className="subCard1">
-                    <img src={index.picture[0]} className="buyimg" />
+                    <img src={index.picture[0].url1} className="buyimg" />
                     <div className="buytxtmaindiv">
                       <div>
                         <p className="buytxt">{index.name}</p>
@@ -87,12 +155,13 @@ function Payment(props) {
                 <p className="buyheadtxt">Address</p>
               </div>
               <div className="forms">
-                <form className="forms_1">
+                <form className="forms_1" onSubmit={payhandler}>
                   <div className="buyipdiv">
                     <input
                       type="text"
                       className="buyinput"
                       placeholder="Full name"
+                      ref={nam}
                       required
                     />
                   </div>
@@ -101,6 +170,7 @@ function Payment(props) {
                       type="text"
                       className="buyinput"
                       placeholder="Mobile Number"
+                      ref={mobile}
                       required
                     />
                   </div>
@@ -109,6 +179,7 @@ function Payment(props) {
                       type="text"
                       className="buyinput"
                       placeholder="Flat, House.no, Building, Apartment"
+                      ref={house}
                       required
                     />
                   </div>
@@ -117,6 +188,8 @@ function Payment(props) {
                       type="text"
                       className="buyinput"
                       placeholder="Area, Colony, Street, Sector, Village"
+                      ref={area}
+                      required
                     />
                   </div>
 
@@ -125,6 +198,7 @@ function Payment(props) {
                       type="text"
                       className="buyinput"
                       placeholder="Town/City"
+                      ref={city}
                       required
                     />
                   </div>
@@ -133,6 +207,7 @@ function Payment(props) {
                       type="text"
                       className="buyinput"
                       placeholder="State"
+                      ref={state}
                       required
                     />
                   </div>
@@ -142,9 +217,11 @@ function Payment(props) {
                         <input
                           type="radio"
                           className="buyinputradio"
-                          defaultChecked
                           id="pod"
                           name="mode"
+                          value="Pay on Delivery"
+                          onChange={modehandler}
+                          defaultChecked
                         />
                         <label>Pay on delivery</label>
                       </div>
@@ -154,6 +231,8 @@ function Payment(props) {
                           className="buyinputradio"
                           id="mode"
                           name="mode"
+                          value="online"
+                          onChange={modehandler}
                         />
                         <label>Online</label>
                       </div>

@@ -1,0 +1,170 @@
+.ordercardmain1 {
+  width: 100vmax;
+  height: 60vmax;
+  margin-top: 5vmax;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: flex-start;
+}
+.orderpro {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vmax;
+}
+.orderphotosub {
+  width: 60%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+}
+.emailtxt {
+  font-size: 2vmax;
+}
+.orderphotosub:hover {
+  animation: orderani 1s ease-out forwards;
+  box-shadow: 0 0 1vmax 0.1vmax black;
+}
+@keyframes orderani {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.05, 1.05);
+  }
+}
+.ordersidemain {
+  width: 50%;
+  height: 83%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ordersidemain2 {
+  text-align: center;
+}
+.ordersidetxt {
+  font-size: 1.4vmax;
+  color: crimson;
+  font-weight: bolder;
+}
+.orderphoto {
+  width: 15vmax;
+  height: 15vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.orderphoto1 {
+  width: 100%;
+  height: 100%;
+}
+.ordercardmain01 {
+  width: 95%;
+  height: 60vmax;
+  background-color: rgba(255, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+}
+.ordermore {
+  margin-right: 0.8vmax;
+  position: absolute;
+  z-index: 1;
+  color: darkslategrey;
+  font-size: 1.8vmax;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.ordercardmain2 {
+  width: 100%;
+  height: 60vmax;
+  background-color: crimson;
+  display: flex;
+  border-top-right-radius: 16vmax;
+  justify-content: space-around;
+  z-index: 0;
+}
+.ordercardmain3 {
+  width: 85%;
+  height: 40vmax;
+  text-align: start;
+}
+.ordernum {
+  width: 5vmax;
+  height: 8vmax;
+  background-color: white;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%, 0 0);
+}
+.orderheadname {
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  font-size: 2.3vmax;
+}
+.orderheadname2 {
+  color: crimson;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  font-size: 2.3vmax;
+}
+.ordersubcard1 {
+  width: 100%;
+  height: 80%;
+  display: block;
+  justify-content: space-evenly;
+}
+.ordercontentCard {
+  width: 25vmax;
+  height: 30vmax;
+  background-color: white;
+  border-top-left-radius: 2vmax;
+  border-top-right-radius: 2vmax;
+}
+.ordercontentCard:hover {
+  animation: orderanimat 2s ease-out forwards;
+}
+.orderimgs {
+  width: 100%;
+  height: 70%;
+  border-top-left-radius: 2vmax;
+  border-top-right-radius: 2vmax;
+}
+.hidden {
+  display: none;
+}
+.ordercardhead {
+  font-size: 1.5vmax;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+}
+.ordercardcap {
+  font-size: 1.2vmax;
+  margin-top: -1.5vmax;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+@keyframes orderanimat {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.05, 1.05);
+  }
+}
+.orderip {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vmax;
+  height: 13%;
+  background-color: white;
+  font-size: 2vmax;
+  color: crimson;
+  font-weight: bolder;
+}

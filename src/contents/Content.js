@@ -1,27 +1,43 @@
 import data from "../selectpage/Data3";
 import "./Content.css";
 import React from "react";
+import firebase from "../firebase";
+import { useAuth } from "../contexts/AuthContext";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import Item from "./Item";
-const Content = (props) => {
-  const properties = data.properties;
+function Content(props) {
+  let i = 0;
+  const properties = [];
+  firebase
+    .database()
+    .ref("Products")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        properties.push(i[id]);
+      }
+    });
   return (
     <div className="wrapper">
       {properties.map((value) => {
+        console.log("in");
         if (value.index % 4 === 0) {
-          if (data.properties.length % 4 === 0) {
+          i = Number(value.index);
+          if (properties.length % 4 === 0) {
             return (
               <Item
-                one={value.index}
-                two={value.index + 1}
-                three={value.index + 2}
-                four={value.index + 3}
+                one={i}
+                two={i + 1}
+                three={i + 2}
+                four={i + 3}
                 sign={1}
                 notindex={props.notindex}
-                key={data.properties[value.index]._id}
+                key={properties[value.index].index}
               />
             );
-          } else if (data.properties.length % 4 === 1) {
-            if (value.index < data.properties.length - 1) {
+          } else if (properties.length % 4 === 1) {
+            if (value.index < properties.length - 1) {
               return (
                 <Item
                   one={value.index}
@@ -30,7 +46,7 @@ const Content = (props) => {
                   four={value.index + 3}
                   sign={1}
                   notindex={props.notindex}
-                  key={data.properties[value.index]._id}
+                  key={properties[value.index].index}
                 />
               );
             } else {
@@ -39,12 +55,12 @@ const Content = (props) => {
                   one={value.index}
                   sign={2}
                   notindex={props.notindex}
-                  key={data.properties[value.index]._id}
+                  key={properties[value.index].index}
                 />
               );
             }
-          } else if (data.properties.length % 4 === 2) {
-            if (value.index < data.properties.length - 2) {
+          } else if (properties.length % 4 === 2) {
+            if (value.index < properties.length - 2) {
               return (
                 <Item
                   one={value.index}
@@ -53,7 +69,7 @@ const Content = (props) => {
                   four={value.index + 3}
                   sign={1}
                   notindex={props.notindex}
-                  key={data.properties[value.index]._id}
+                  key={properties[value.index].index}
                 />
               );
             } else {
@@ -63,12 +79,12 @@ const Content = (props) => {
                   two={value.index + 1}
                   sign={2}
                   notindex={props.notindex}
-                  key={data.properties[value.index]._id}
+                  key={properties[value.index].index}
                 />
               );
             }
-          } else if (data.properties.length % 4 === 3) {
-            if (value.index < data.properties.length - 3) {
+          } else if (properties.length % 4 === 3) {
+            if (value.index < properties.length - 3) {
               return (
                 <Item
                   one={value.index}
@@ -77,7 +93,7 @@ const Content = (props) => {
                   four={value.index + 3}
                   sign={1}
                   notindex={props.notindex}
-                  key={data.properties[value.index]._id}
+                  key={properties[value.index].index}
                 />
               );
             } else {
@@ -88,7 +104,7 @@ const Content = (props) => {
                   three={value.index + 2}
                   sign={2}
                   notindex={props.notindex}
-                  key={data.properties[value.index]._id}
+                  key={properties[value.index].index}
                 />
               );
             }
@@ -97,5 +113,5 @@ const Content = (props) => {
       })}
     </div>
   );
-};
+}
 export default Content;

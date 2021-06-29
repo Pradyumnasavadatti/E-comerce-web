@@ -1,8 +1,19 @@
 import data from "../selectpage/Data3";
 import React from "react";
 import "./Filter.css";
+import firebase from "../firebase";
 import { Link } from "react-router-dom";
 function FilterItem(props) {
+  const properties = [];
+  firebase
+    .database()
+    .ref("Products")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        properties.push(i[id]);
+      }
+    });
   if (props.sign === 1) {
     return (
       <div className="wrapper1_1">
@@ -15,13 +26,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.one].picture[0]}
+                    src={properties[props.one].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.one].name}</p>
-                <p className="txt_1">{data.properties[props.one].price}</p>
+                <p className="txt_1">{properties[props.one].name}</p>
+                <p className="txt_1">{properties[props.one].price}</p>
               </div>
             </Link>
             <Link
@@ -31,13 +42,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.two].picture[0]}
+                    src={properties[props.two].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.two].name}</p>
-                <p className="txt_1">{data.properties[props.two].price}</p>
+                <p className="txt_1">{properties[props.two].name}</p>
+                <p className="txt_1">{properties[props.two].price}</p>
               </div>
             </Link>
           </div>
@@ -49,13 +60,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.three].picture[0]}
+                    src={properties[props.three].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.three].name}</p>
-                <p className="txt_1">{data.properties[props.three].price}</p>
+                <p className="txt_1">{properties[props.three].name}</p>
+                <p className="txt_1">{properties[props.three].price}</p>
               </div>
             </Link>
             <Link
@@ -65,13 +76,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.four].picture[0]}
+                    src={properties[props.four].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.four].name}</p>
-                <p className="txt_1">{data.properties[props.four].price}</p>
+                <p className="txt_1">{properties[props.four].name}</p>
+                <p className="txt_1">{properties[props.four].price}</p>
               </div>
             </Link>
           </div>
@@ -90,13 +101,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.one].picture[0]}
+                    src={properties[props.one].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.one].name}</p>
-                <p className="txt_1">{data.properties[props.one].price}</p>
+                <p className="txt_1">{properties[props.one].name}</p>
+                <p className="txt_1">{properties[props.one].price}</p>
               </div>
             </Link>
             <div className="wrapper31_1"></div>
@@ -120,13 +131,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.one].picture[0]}
+                    src={properties[props.one].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.one].name}</p>
-                <p className="txt_1">{data.properties[props.one].price}</p>
+                <p className="txt_1">{properties[props.one].name}</p>
+                <p className="txt_1">{properties[props.one].price}</p>
               </div>
             </Link>
             <Link
@@ -136,13 +147,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.two].picture[0]}
+                    src={properties[props.two].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.two].name}</p>
-                <p className="txt_1">{data.properties[props.two].price}</p>
+                <p className="txt_1">{properties[props.two].name}</p>
+                <p className="txt_1">{properties[props.two].price}</p>
               </div>
             </Link>
           </div>
@@ -165,13 +176,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.one].picture[0]}
+                    src={properties[props.one].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.one].name}</p>
-                <p className="txt_1">{data.properties[props.one].price}</p>
+                <p className="txt_1">{properties[props.one].name}</p>
+                <p className="txt_1">{properties[props.one].price}</p>
               </div>
             </Link>
             <Link
@@ -181,13 +192,13 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.two].picture[0]}
+                    src={properties[props.two].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
-                <p className="txt_1">{data.properties[props.two].name}</p>
-                <p className="txt_1">{data.properties[props.two].price}</p>
+                <p className="txt_1">{properties[props.two].name}</p>
+                <p className="txt_1">{properties[props.two].price}</p>
               </div>
             </Link>
           </div>
@@ -199,14 +210,14 @@ function FilterItem(props) {
               <div className="wrapper3_1">
                 <div className="shirt_1">
                   <img
-                    src={data.properties[props.three].picture[0]}
+                    src={properties[props.three].picture[0].url1}
                     className="itemimg_1"
                     alt="Loading..."
                   />
                 </div>
 
-                <p className="txt_1">{data.properties[props.three].name}</p>
-                <p className="txt_1">{data.properties[props.three].price}</p>
+                <p className="txt_1">{properties[props.three].name}</p>
+                <p className="txt_1">{properties[props.three].price}</p>
               </div>
             </Link>
             <div className="wrapper31_1"></div>

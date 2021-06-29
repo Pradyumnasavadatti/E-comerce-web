@@ -1,12 +1,23 @@
 import data from "../selectpage/Data3";
 import { useLocation } from "react-router-dom";
 import Item from "../filter/FilterItem";
+import firebase from "../firebase";
 const Productcateg = () => {
   let i = 0;
   let j = 0;
   let a = [];
   let ind = useLocation();
-  data.properties.map((index) => {
+  const properties = [];
+  firebase
+    .database()
+    .ref("Products")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        properties.push(i[id]);
+      }
+    });
+  properties.map((index) => {
     if (index.cat === ind.state) {
       i = i + 1;
       a[i] = index.index;
@@ -15,8 +26,8 @@ const Productcateg = () => {
   return (
     <div>
       <div className="wrapper_1">
-        {data.properties.map((value) => {
-          if (data.properties[value.index].cat === ind.state) {
+        {properties.map((value) => {
+          if (properties[value.index].cat === ind.state) {
             if (i % 4 === 0 && i !== 0) {
               j = j + 1;
               i = i - 4;
@@ -28,7 +39,7 @@ const Productcateg = () => {
                   four={a[i + 1]}
                   sign={1}
                   notindex={-1}
-                  key={data.properties[value.index]._id}
+                  key={properties[value.index].index}
                 />
               );
             } else if (i % 4 === 1) {
@@ -43,7 +54,7 @@ const Productcateg = () => {
                     four={a[i + 1]}
                     sign={1}
                     notindex={-1}
-                    key={data.properties[value.index]._id}
+                    key={properties[value.index].index}
                   />
                 );
               } else {
@@ -54,7 +65,7 @@ const Productcateg = () => {
                     one={a[i + 1]}
                     sign={2}
                     notindex={-1}
-                    key={data.properties[value.index]._id}
+                    key={properties[value.index].index}
                   />
                 );
               }
@@ -70,7 +81,7 @@ const Productcateg = () => {
                     four={a[i + 1]}
                     sign={1}
                     notindex={-1}
-                    key={data.properties[value.index]._id}
+                    key={properties[value.index].index}
                   />
                 );
               } else {
@@ -82,7 +93,7 @@ const Productcateg = () => {
                     two={a[i + 1]}
                     sign={3}
                     notindex={-1}
-                    key={data.properties[value.index]._id}
+                    key={properties[value.index].index}
                   />
                 );
               }
@@ -98,7 +109,7 @@ const Productcateg = () => {
                     four={a[i + 1]}
                     sign={1}
                     notindex={-1}
-                    key={data.properties[value.index]._id}
+                    key={properties[value.index].index}
                   />
                 );
               } else {
@@ -111,7 +122,7 @@ const Productcateg = () => {
                     three={a[i + 1]}
                     sign={4}
                     notindex={-1}
-                    key={data.properties[value.index]._id}
+                    key={properties[value.index].index}
                   />
                 );
               }

@@ -1,12 +1,22 @@
 import Item from "./FilterItem";
 import "./Filter.css";
 import data from "../selectpage/Data3";
+import firebase from "../firebase";
 
 function FilterCmd(props) {
   let i = 0;
   let j = 0;
-  const properties = data.properties;
-  data.properties.map((index) => {
+  const properties = [];
+  firebase
+    .database()
+    .ref("Products")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        properties.push(i[id]);
+      }
+    });
+  properties.map((index) => {
     if (
       index.color === props.ind.state.color &&
       index.cat === props.ind.state.cat &&
@@ -36,11 +46,11 @@ function FilterCmd(props) {
             data.properties[value.index].name === props.ind.state.brand
           ) {
             if (
-              data.properties[value.index].size[0] === props.ind.state.siz ||
-              data.properties[value.index].size[1] === props.ind.state.siz ||
-              data.properties[value.index].size[2] === props.ind.state.siz ||
-              data.properties[value.index].size[3] === props.ind.state.siz ||
-              data.properties[value.index].size[4] === props.ind.state.siz
+              properties[value.index].size[0] === props.ind.state.siz ||
+              properties[value.index].size[1] === props.ind.state.siz ||
+              properties[value.index].size[2] === props.ind.state.siz ||
+              properties[value.index].size[3] === props.ind.state.siz ||
+              properties[value.index].size[4] === props.ind.state.siz
             ) {
               if (i % 4 === 0) {
                 j = j + 1;
@@ -52,7 +62,7 @@ function FilterCmd(props) {
                     four={value.index + 3}
                     sign={1}
                     notindex={-1}
-                    key={data.properties[value.index]._id}
+                    key={properties[value.index].index}
                   />
                 );
               } else if (i % 4 === 1) {
@@ -66,7 +76,7 @@ function FilterCmd(props) {
                       four={value.index + 3}
                       sign={1}
                       notindex={-1}
-                      key={data.properties[value.index]._id}
+                      key={properties[value.index].index}
                     />
                   );
                 } else {
@@ -76,7 +86,7 @@ function FilterCmd(props) {
                       one={value.index}
                       sign={2}
                       notindex={-1}
-                      key={data.properties[value.index]._id}
+                      key={properties[value.index].index}
                     />
                   );
                 }
@@ -91,7 +101,7 @@ function FilterCmd(props) {
                       four={value.index + 3}
                       sign={1}
                       notindex={-1}
-                      key={data.properties[value.index]._id}
+                      key={properties[value.index].index}
                     />
                   );
                 } else {
@@ -102,7 +112,7 @@ function FilterCmd(props) {
                       two={value.index + 1}
                       sign={3}
                       notindex={-1}
-                      key={data.properties[value.index]._id}
+                      key={properties[value.index].index}
                     />
                   );
                 }
@@ -117,7 +127,7 @@ function FilterCmd(props) {
                       four={value.index + 3}
                       sign={1}
                       notindex={-1}
-                      key={data.properties[value.index]._id}
+                      key={properties[value.index].index}
                     />
                   );
                 } else {
@@ -129,7 +139,7 @@ function FilterCmd(props) {
                       three={value.index + 2}
                       sign={4}
                       notindex={-1}
-                      key={data.properties[value.index]._id}
+                      key={properties[value.index].index}
                     />
                   );
                 }

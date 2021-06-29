@@ -1,24 +1,4 @@
-import img1 from "../photos/p5.jpg";
-import img2 from "../photos/p6.jpg";
-import img3 from "../photos/p7.jpg";
-import img4 from "../photos/p8.jpg";
-import img5 from "../photos/p9.jpg";
-import img6 from "../photos/p10.jpg";
-import img7 from "../photos/p11.jpg";
-import img8 from "../photos/p12.jpg";
-import img9 from "../photos/p13.jpg";
-import img10 from "../photos/p14.jpg";
-import img11 from "../photos/p15.jpg";
-import img12 from "../photos/p16.jpg";
-import img13 from "../photos/p17.jpg";
-import img14 from "../photos/p18.jpg";
-import img15 from "../photos/p19.jpg";
-import img16 from "../photos/p20.jpg";
-import img17 from "../photos/p21.jpg";
-import img18 from "../photos/p22.jpg";
-import img19 from "../photos/p23.jpg";
-import img20 from "../photos/p24.jpg";
-const Data3 = {
+/*const Data3 = {
   properties: [
     {
       _id: 0,
@@ -281,3 +261,4 @@ const Data3 = {
   ],
 };
 export default Data3;
+*/

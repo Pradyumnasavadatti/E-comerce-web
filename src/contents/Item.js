@@ -1,9 +1,19 @@
 import data from "../selectpage/Data3";
 import React from "react";
-import ReactDOM from "react-dom";
 import "./Content.css";
+import firebase from "../firebase";
 import { Link } from "react-router-dom";
 function Item(props) {
+  const properties = [];
+  firebase
+    .database()
+    .ref("Products")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        properties.push(i[id]);
+      }
+    });
   if (
     props.notindex === props.one ||
     props.notindex === props.two ||
@@ -24,13 +34,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.one].picture[0]}
+                      src={properties[props.one].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.one].name}</p>
-                  <p className="txt">{data.properties[props.one].price}</p>
+                  <p className="txt">{properties[props.one].name}</p>
+                  <p className="txt">Rs.{properties[props.one].price}/-</p>
                 </div>
               </Link>
               <Link
@@ -40,13 +50,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.two].picture[0]}
+                      src={properties[props.two].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.two].name}</p>
-                  <p className="txt">{data.properties[props.two].price}</p>
+                  <p className="txt">{properties[props.two].name}</p>
+                  <p className="txt">Rs.{properties[props.two].price}/-</p>
                 </div>
               </Link>
             </div>
@@ -58,13 +68,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.three].picture[0]}
+                      src={properties[props.three].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.three].name}</p>
-                  <p className="txt">{data.properties[props.three].price}</p>
+                  <p className="txt">{properties[props.three].name}</p>
+                  <p className="txt">Rs.{properties[props.three].price}/-</p>
                 </div>
               </Link>
               <Link
@@ -74,20 +84,20 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.four].picture[0]}
+                      src={properties[props.four].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.four].name}</p>
-                  <p className="txt">{data.properties[props.four].price}</p>
+                  <p className="txt">{properties[props.four].name}</p>
+                  <p className="txt">Rs.{properties[props.four].price}/-</p>
                 </div>
               </Link>
             </div>
           </div>
         </div>
       );
-    } else if (data.properties.length % 4 === 1) {
+    } else if (properties.length % 4 === 1) {
       return (
         <div className="wrapper1">
           <div className="wrapper2">
@@ -99,13 +109,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.one].picture[0]}
+                      src={properties[props.one].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.one].name}</p>
-                  <p className="txt">{data.properties[props.one].price}</p>
+                  <p className="txt">{properties[props.one].name}</p>
+                  <p className="txt">Rs.{properties[props.one].price}/-</p>
                 </div>
               </Link>
               <div className="wrapper31"></div>
@@ -117,7 +127,7 @@ function Item(props) {
           </div>
         </div>
       );
-    } else if (data.properties.length % 4 === 2) {
+    } else if (properties.length % 4 === 2) {
       return (
         <div className="wrapper1">
           <div className="wrapper2">
@@ -129,13 +139,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.one].picture[0]}
+                      src={properties[props.one].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.one].name}</p>
-                  <p className="txt">{data.properties[props.one].price}</p>
+                  <p className="txt">{properties[props.one].name}</p>
+                  <p className="txt">Rs.{properties[props.one].price}/-</p>
                 </div>
               </Link>
               <Link
@@ -145,13 +155,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.two].picture[0]}
+                      src={properties[props.two].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.two].name}</p>
-                  <p className="txt">{data.properties[props.two].price}</p>
+                  <p className="txt">{properties[props.two].name}</p>
+                  <p className="txt">Rs.{properties[props.two].price}/-</p>
                 </div>
               </Link>
             </div>
@@ -162,7 +172,7 @@ function Item(props) {
           </div>
         </div>
       );
-    } else if (data.properties.length % 4 === 3) {
+    } else if (properties.length % 4 === 3) {
       return (
         <div className="wrapper1">
           <div className="wrapper2">
@@ -174,13 +184,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.one].picture[0]}
+                      src={properties[props.one].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.one].name}</p>
-                  <p className="txt">{data.properties[props.one].price}</p>
+                  <p className="txt">{properties[props.one].name}</p>
+                  <p className="txt">Rs.{properties[props.one].price}/-</p>
                 </div>
               </Link>
               <Link
@@ -190,13 +200,13 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.two].picture[0]}
+                      src={properties[props.two].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
-                  <p className="txt">{data.properties[props.two].name}</p>
-                  <p className="txt">{data.properties[props.two].price}</p>
+                  <p className="txt">{properties[props.two].name}</p>
+                  <p className="txt">Rs.{properties[props.two].price}/-</p>
                 </div>
               </Link>
             </div>
@@ -208,14 +218,14 @@ function Item(props) {
                 <div className="wrapper3">
                   <div className="shirt">
                     <img
-                      src={data.properties[props.three].picture[0]}
+                      src={properties[props.three].picture[0].url1}
                       className="itemimg"
                       alt="Loading..."
                     />
                   </div>
 
-                  <p className="txt">{data.properties[props.three].name}</p>
-                  <p className="txt">{data.properties[props.three].price}</p>
+                  <p className="txt">{properties[props.three].name}</p>
+                  <p className="txt">Rs.{properties[props.three].price}/-</p>
                 </div>
               </Link>
               <div className="wrapper31"></div>

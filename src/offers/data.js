@@ -1,6 +1,6 @@
 import img1 from "../photos/p1.jpg";
 import img2 from "../photos/p2.jpg";
-import img3 from "../photos/p3.jpg";
+import img3 from "../photos/p3.JPG";
 import img4 from "../photos/p4.jpg";
 const imgs = {
   properties: [

@@ -7,10 +7,64 @@ import Ac from "@material-ui/icons/Search";
 import Mi from "@material-ui/icons/Menu";
 import React from "react";
 import ud from "../User.js";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 let t = 0;
 const Nav = () => {
+  const history = useHistory();
+  const { logout } = useAuth();
   const cu = useAuth();
+  const properties1 = [];
+  const properties2 = [];
+  const properties = [];
+  firebase
+    .database()
+    .ref("User")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        if (cu.currentUser.email === i[id].email) {
+          properties1.push(i[id].cart);
+        }
+      }
+    });
+  firebase
+    .database()
+    .ref("Products")
+    .on("value", (snapshot) => {
+      const i = snapshot.val();
+      for (let id in i) {
+        for (let iu in properties1) {
+          let z = properties1[iu];
+          for (let u in z) {
+            if (z[u] === Number(i[id].index)) {
+              properties.push(i[id]);
+            }
+          }
+        }
+      }
+    });
+  const logouthandler = () => {
+    logout();
+    history.push("/");
+  };
+  const remov = (index) => {
+    firebase
+      .database()
+      .ref("User")
+      .on("value", (sc) => {
+        let f = sc.val();
+        for (let i in f) {
+          let w = f[i].cart;
+          for (let y in w) {
+            if (Number(index) === Number(w[y])) {
+              let e = firebase.database().ref(`User/${i}/cart/${index - 1}`);
+              e.remove();
+            }
+          }
+        }
+      });
+  };
+
   const [dis, changedis] = useState(false);
   const [dis2, changedis2] = useState(false);
   const [dis3, changedis3] = useState(false);
@@ -100,220 +154,248 @@ const Nav = () => {
     setOption4(event.target.value);
   }
   return (
-    <div className={style.navmain}>
-      <div id={style.navsub}>
-        <div id={style.logo} onMouseEnter={fun2}>
-          <h1 data-text="TBB">
-            <span>TBB</span>
-          </h1>
-        </div>
-
-        <div className={style.midd2} onMouseEnter={fun2}></div>
-
-        <div id={style.filterdiv} onMouseEnter={fun2} onClick={filterfunc1}>
-          <button className={style["filter"]}>Filter</button>
-        </div>
-
-        <div className={style.midd} onMouseEnter={fun2}></div>
-
-        <div id={style.menubtn}>
-          <Mi id={style.mbtn} />
-        </div>
-
-        <div id={style.navitems}>
-          <div className={style["navitem1"]} onMouseEnter={fun1}>
-            <p className={style.paraitem1}>Products</p>
+    <>
+      <div className={style.navmain}>
+        <div id={style.navsub}>
+          <div id={style.logo} onMouseEnter={fun2}>
+            <h1 data-text="TBB">
+              <span>TBB</span>
+            </h1>
           </div>
-          <div id={style.navitem2} onMouseEnter={fun4} onClick={func}>
-            <p className={style.paraitem2}>Cart</p>
+
+          <div className={style.midd2} onMouseEnter={fun2}></div>
+
+          <div id={style.filterdiv} onMouseEnter={fun2} onClick={filterfunc1}>
+            <button className={style["filter"]}>Filter</button>
           </div>
-          <div id={style.navitem3} onMouseEnter={fun2} onClick={userfunc1}>
-            <p className={style.paraitem3}>User</p>
+
+          <div className={style.midd} onMouseEnter={fun2}></div>
+
+          <div id={style.menubtn}>
+            <Mi id={style.mbtn} />
+          </div>
+
+          <div id={style.navitems}>
+            <div className={style["navitem1"]} onMouseEnter={fun1}>
+              <p className={style.paraitem1}>Products</p>
+            </div>
+            <div id={style.navitem2} onMouseEnter={fun4} onClick={func}>
+              <p className={style.paraitem2}>Cart</p>
+            </div>
+            <div id={style.navitem3} onMouseEnter={fun2} onClick={userfunc1}>
+              <p className={style.paraitem3}>User</p>
+            </div>
           </div>
         </div>
-      </div>
-      {dis && (
-        <div className={style["onHoverpara"]}>
-          <div
-            className={style["onHover"]}
-            onMouseHover={fun3}
-            onMouseLeave={fun2}
-          >
-            <Link
-              to={{ pathname: "/specific/category", state: "men" }}
-              style={{ textDecoration: "none", color: "black" }}
+        {dis && (
+          <div className={style["onHoverpara"]}>
+            <div
+              className={style["onHover"]}
+              onMouseHover={fun3}
+              onMouseLeave={fun2}
+            >
+              <Link
+                to={{ pathname: "/specific/category", state: "men" }}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p className={style.pmen1}>Men</p>
+              </Link>
+              <hr />
+              <Link
+                to={{ pathname: "/specific/category", state: "women" }}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p className={style.pmen1}>Women</p>
+              </Link>
+              <hr />
+              <Link
+                to={{ pathname: "/specific/category", state: "kids" }}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p className={style.pmen1}>Kids</p>
+              </Link>
+            </div>
+          </div>
+        )}
+        {dis2 && (
+          <div className={style["onHoverpara"]}>
+            <div
+              className={style["onHover2"]}
+              onMouseMoveCapture={fun3}
+              onMouseLeave={fun2}
             >
               <p className={style.pmen1}>Men</p>
-            </Link>
-            <hr />
-            <Link
-              to={{ pathname: "/specific/category", state: "women" }}
-              style={{ textDecoration: "none", color: "black" }}
-            >
               <p className={style.pmen1}>Women</p>
-            </Link>
-            <hr />
-            <Link
-              to={{ pathname: "/specific/category", state: "kids" }}
-              style={{ textDecoration: "none", color: "black" }}
-            >
               <p className={style.pmen1}>Kids</p>
-            </Link>
+            </div>
           </div>
-        </div>
-      )}
-      {dis2 && (
-        <div className={style["onHoverpara"]}>
-          <div
-            className={style["onHover2"]}
-            onMouseMoveCapture={fun3}
-            onMouseLeave={fun2}
-          >
+        )}
+        {dis3 && (
+          <div className={style["onHover3"]}>
             <p className={style.pmen1}>Men</p>
             <p className={style.pmen1}>Women</p>
             <p className={style.pmen1}>Kids</p>
           </div>
-        </div>
-      )}
-      {dis3 && (
-        <div className={style["onHover3"]}>
-          <p className={style.pmen1}>Men</p>
-          <p className={style.pmen1}>Women</p>
-          <p className={style.pmen1}>Kids</p>
-        </div>
-      )}
+        )}
 
-      {carts && (
-        <div className={style["cartspara"]}>
-          <div className={style["carts"]} onMouseLeave={func2}>
-            {data.properties.map((index) => (
-              <div className={style["cartcardpara"]}>
-                <Link
-                  to={{ pathname: "/bestItem", state: index.index }}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <div className={style["cartcard"]}>
-                    <div className={style["sideimg"]}>
-                      <img
-                        className={style["sideimg2"]}
-                        src={index.picture[0]}
-                      />
-                    </div>
-                    <div className={style["side2"]}>
-                      <div className={style["sidetext"]}>
-                        <div className={style["divp"]}>
-                          <p>{index.name}</p>
-                        </div>
-                        <div className={style["divp"]}>
-                          <p>Rs. {index.price}/-</p>
-                        </div>
-                        <div className={style["divp"]}>
-                          <p>{index.size}</p>
-                        </div>
+        {carts && (
+          <div className={style["cartspara"]}>
+            <div className={style["carts"]} onMouseLeave={func2}>
+              {properties.map((index) => (
+                <div className={style["cartcardpara"]}>
+                  <Link
+                    to={{ pathname: "/bestItem", state: index.index }}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <div className={style["cartcard"]}>
+                      <div className={style["sideimg"]}>
+                        <img
+                          className={style["sideimg2"]}
+                          src={index.picture[0].url1}
+                        />
                       </div>
-                      <button className={style["sidebutton"]}>Remove</button>
+                      <div className={style["side2"]}>
+                        <div className={style["sidetext"]}>
+                          <div className={style["divp"]}>
+                            <p>{index.name}</p>
+                          </div>
+                          <div className={style["divp"]}>
+                            <p>Rs. {index.price}/-</p>
+                          </div>
+                          <div className={style["divp"]}>
+                            <p>{index.size}</p>
+                          </div>
+                        </div>
+                        <Link
+                          to={{ pathname: "/Items", state: index.index }}
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <button
+                            className={style["sidebutton"]}
+                            onClick={() => {
+                              remov(index.index);
+                            }}
+                          >
+                            Remove
+                          </button>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-      {user && (
-        <div className={style["usersidepara"]}>
-          <div className={style["userside"]} onMouseLeave={userfunc2}>
-            <p className={style["fp"]}>My Orders</p>
-            <hr className={style["hoz"]} />
-            <p className={style.pmen1}>My Details</p>
-            <hr className={style["hoz"]} />
-            <p className={style.pmen1}>Log Out</p>
+        )}
+        {user && (
+          <div className={style["usersidepara"]}>
+            <div className={style["userside"]} onMouseLeave={userfunc2}>
+              <Link
+                to={{ pathname: "/Your_orders" }}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <p className={style["fp"]}>My Orders</p>
+              </Link>
+              <hr className={style["hoz"]} />
+              <Link
+                to={{ pathname: "/your/info" }}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <p className={style.pmen1}>My Details</p>
+              </Link>
+              <hr className={style["hoz"]} />
+              <p className={style.pmen1} onClick={logouthandler}>
+                Log Out
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {filter && (
-        <div className={style["filterdiv1"]}>
-          <div className={style["filterdiv2"]} onMouseLeave={filterfunc2}>
-            <div className={style["colors"]}>
-              <div>
-                <label className={style["lab"]}>Color : </label>
+        {filter && (
+          <div className={style["filterdiv1"]}>
+            <div className={style["filterdiv2"]} onMouseLeave={filterfunc2}>
+              <div className={style["colors"]}>
+                <div>
+                  <label className={style["lab"]}>Color : </label>
+                </div>
+                <div>
+                  <select onChange={handleChange}>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="navyblue">Navy Blue</option>
+                    <option value="white">White</option>
+                    <option value="skyblue">Sky Blue</option>
+                    <option value="black">Black</option>
+                    <option value="pink">Pink</option>
+                  </select>
+                </div>
               </div>
-              <div>
-                <select onChange={handleChange}>
-                  <option value="red">Red</option>
-                  <option value="orange">Orange</option>
-                  <option value="yellow">Yellow</option>
-                  <option value="navyblue">Navy Blue</option>
-                  <option value="white">White</option>
-                  <option value="skyblue">Sky Blue</option>
-                  <option value="black">Black</option>
-                  <option value="pink">Pink</option>
-                </select>
+              <div className={style["colors"]}>
+                <div>
+                  <label className={style["lab"]}>Category : </label>
+                </div>
+                <div>
+                  <select onChange={handleChange2}>
+                    <option value="men">Men</option>
+                    <option value="woman">Woman</option>
+                    <option value="kids">Kids</option>
+                  </select>
+                </div>
               </div>
+              <div className={style["colors"]}>
+                <div>
+                  <label className={style["lab"]}>Size : </label>
+                </div>
+                <div>
+                  <select onChange={handleChange3}>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                  </select>
+                </div>
+              </div>
+              <div className={style["colors"]}>
+                <div>
+                  <label className={style["lab"]}>Company : </label>
+                </div>
+                <div>
+                  <select onChange={handleChange4}>
+                    <option value="Adidas Cotton Tshirt">Adidas</option>
+                    <option value="Puma Cotton Tshirt">Puma</option>
+                    <option value="Nike Cotton Tshirt">Nike</option>
+                    <option value="John Playes Cotton Tshirt">
+                      John Players
+                    </option>
+                    <option value="Huge Cotton Tshirt">Huge</option>
+                    <option value="Cotton King Cotton Tshirt">
+                      Cotton King
+                    </option>
+                    <option value="Raymond Cotton Tshirt">Raymond</option>
+                  </select>
+                </div>
+              </div>
+              <Link
+                to={{
+                  pathname: "/filteredItem",
+                  state: {
+                    color: option,
+                    cat: option2,
+                    siz: option3,
+                    brand: option4,
+                  },
+                }}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <button className={style["searchfilter"]}>Search</button>
+              </Link>
             </div>
-            <div className={style["colors"]}>
-              <div>
-                <label className={style["lab"]}>Category : </label>
-              </div>
-              <div>
-                <select onChange={handleChange2}>
-                  <option value="men">Men</option>
-                  <option value="woman">Woman</option>
-                  <option value="kids">Kids</option>
-                </select>
-              </div>
-            </div>
-            <div className={style["colors"]}>
-              <div>
-                <label className={style["lab"]}>Size : </label>
-              </div>
-              <div>
-                <select onChange={handleChange3}>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                  <option value="XXL">XXL</option>
-                </select>
-              </div>
-            </div>
-            <div className={style["colors"]}>
-              <div>
-                <label className={style["lab"]}>Company : </label>
-              </div>
-              <div>
-                <select onChange={handleChange4}>
-                  <option value="Adidas Cotton Tshirt">Adidas</option>
-                  <option value="Puma Cotton Tshirt">Puma</option>
-                  <option value="Nike Cotton Tshirt">Nike</option>
-                  <option value="John Playes Cotton Tshirt">
-                    John Players
-                  </option>
-                  <option value="Huge Cotton Tshirt">Huge</option>
-                  <option value="Cotton King Cotton Tshirt">Cotton King</option>
-                  <option value="Raymond Cotton Tshirt">Raymond</option>
-                </select>
-              </div>
-            </div>
-            <Link
-              to={{
-                pathname: "/filteredItem",
-                state: {
-                  color: option,
-                  cat: option2,
-                  siz: option3,
-                  brand: option4,
-                },
-              }}
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <button className={style["searchfilter"]}>Search</button>
-            </Link>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 export default Nav;

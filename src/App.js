@@ -1,19 +1,20 @@
 import "./App.css";
-import Nav from "./navbar/Nav";
-import Offer from "./offers/Offer";
-import Content from "./contents/Content";
-import { Route, Switch } from "react-router-dom";
-import Mainselect from "./selectpage/Mainselect";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import React from "react";
-import ReactDOM from "react-dom";
-import Filter from "./filter/Filter";
-import CP from "./navbar/Productcateg";
-import Pay from "./pay/Payment";
-import Log from "./components/Log_sign";
+import Log from "./components/Logsign";
 import { AuthProvider } from "./contexts/AuthContext";
 import Admin from "./Proinsert";
 import Privateroute from "./Privateroute";
+import Orderplaced from "./components2/Orderplacedmain";
+import Urorder from "./components2/Urorder";
+import SelectMain from "./components2/SelectMain";
+import Filtered from "./components2/Filtered";
+import Specat from "./components2/Specat";
+import Item from "./components2/Itemsmain";
+import Pay from "./components2/PayMain";
+import Info from "./components2/Info";
+import Admins from "./admin/Admin";
 function App() {
   const history = useHistory();
   history.listen((location, action) => {
@@ -23,26 +24,23 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Switch>
-          <Route path={"/"} exact>
+          <Route path="/" exact>
             <Log />
           </Route>
-          <Route path={"/Items"} exact>
+          <Route path={"/nimda"} exact>
+            <Admins />
+          </Route>
+          <Route path={"/I2"} exact>
             <Admin />
           </Route>
-          <Route path={"/bestItem"} exact>
-            <Mainselect />
-          </Route>
-          <Route path={"/filteredItem"} exact>
-            <Filter />
-          </Route>
-          <Route path={"/specific/category"} exact>
-            <Nav />
-            <CP />
-          </Route>
-          <Route path={"/bestItem/pay"} exact>
-            <Nav />
-            <Pay />
-          </Route>
+          <Privateroute path={"/OrderPlaced"} component={Orderplaced} exact />
+          <Privateroute path={"/Your_orders"} component={Urorder} exact />
+          <Privateroute path={"/Items"} component={Item} exact />
+          <Privateroute path={"/bestItem"} component={SelectMain} exact />
+          <Privateroute path={"/filteredItem"} exact component={Filtered} />
+          <Privateroute path={"/specific/category"} exact component={Specat} />
+          <Privateroute path={"/bestItem/pay"} exact component={Pay} />
+          <Privateroute path={"/your/info"} exact component={Info} />
         </Switch>
       </AuthProvider>
     </div>

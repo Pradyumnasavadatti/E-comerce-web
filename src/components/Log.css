@@ -10,7 +10,7 @@
   width: 30%;
   height: 70%;
   background-color: rgba(0, 0, 0, 0);
-  border: 0vmax solid black;
+  border: 0vmax solid royalblue;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,4 +230,15 @@
   border: 0px solid white;
   cursor: pointer;
   border-radius: 0.5vmax;
+}
+.adminbtn {
+  width: 50%;
+  height: 50%;
+  cursor: pointer;
+  border: 0px solid black;
+  background-color: white;
+}
+.adminbtndiv {
+  width: 100%;
+  height: 10vmax;
 }
